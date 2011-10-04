@@ -1,0 +1,29 @@
+2004.07.14 - altered httpd.conf setup to
+	have wicap-php on port 8080 and
+	the dist docs on 80.  Also, changed
+	install.sh to reflect this.
+
+	added "mac address checking" to both
+	add.pl and allow.pl.
+2004.07.21 - added "logrotate" functionality
+	and added logging of successful
+	auths per PTP definition of an auth.
+2005.06.10 - changed allow.pl to block on a fifo named pipe
+	(rather than a flatfile), which means that,
+	clients no longer have to wait 10 seconds for the
+	lease-file to be polled. The only bad thing,
+	is that leases are only analyzed when a new client auth's,
+	so a client could keep a lease indefinately, if there
+	are no other auths. Also, this file is not a persistent
+	record, so if the server is restarted, clients must re-auth.
+	Overall, I think these problems are okay in light of
+	the positive benefits of the change.
+2005.07.20 - rewrote allow.pl to be threaded, then realized
+	that the dist. OpenBSD perl is not threaded. Gave up
+	and rewrote allow.pl in 'C' as allow.c. This version
+	is uses fork and IPC instead of threads (thanks to a bug
+	in the pthread libs). It also does arp-lookup itself,
+	and it probably much faster than the original allow.pl. 
+2005.12.23 - working on porting to freebsd. made some changes
+	to the code to get it to compile on freebsd (all cosmetic changes),
+	and added a makefile for freebsd.

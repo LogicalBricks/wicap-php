@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# this is a small shell script meant to be run
+# in a crontab on a logical interval...like
+# 24 hours. It rotates the log files for
+# wicap-php using the script rotate_something.sh
+
+# kill allow.pl logrotate style to avoid stomping
+# on one another...
+kill `ps ax | grep allow | grep parent | cut -b 1-5`
+
+# rotate the log
+/usr/local/wicap-php/bin/rotate_something.sh /usr/local/wicap-php/var/allow.log 6 root 0 666
+
+/usr/local/wicap-php/bin/allow.rc

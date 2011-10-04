@@ -1,0 +1,15 @@
+CC=gcc
+CC_OPT=
+CC_INC=-I/usr/local/include
+CC_LIB=-L/usr/local/lib -levent
+
+all: allow 
+
+allow: allow.o
+	$(CC) -o allow allow.o $(CC_LIB)
+
+allow.o: allow.c
+	$(CC) $(CC_OPT) $(CC_INC) -c -o allow.o allow.c
+
+clean:
+	rm -f allow allow.o

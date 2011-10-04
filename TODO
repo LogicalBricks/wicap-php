@@ -1,0 +1,10 @@
+- reduce number of globals
+- testing
+- how is rrdtool working
+- port to other BSDs?
+- some scripts to make pretty pictures from rrdtool data
++ Merge with Python version
++ Document redirect to index on Apache
++ make evict on no arp less strict
++ package/release new version
++ Port to FreeBSD

@@ -1,0 +1,159 @@
+-= WiCap-PHP Install Instructions =-
+
+Installation should be pretty easy 
+if you are working with a fairly straight-forward
+install of OpenBSD 3.x (tested on 3.5 and 3.7). 
+If you are not, it will probably still work
+but may require a tweak here and there.
+I will start with requirements, and then
+get to the program itself.
+
+	Outline of Steps:
+
+	1. Apache
+	2. PHP
+	3. Install
+	4. Firewall
+	5. Daemon
+	6. Cron
+	7. DHCP and DNS
+	8. Testing
+
+Also, notice this Wiki page which outlines many of the
+same steps:
+
+http://www.smallwhitecube.com/php/dokuwiki/doku.php?id=howto:openbsdap
+
+Here we go...
+
+1) Apache 
+
+Most likely this is already installed
+and has some files at /var/www. You should be able to
+: `apachectl start`. If you don't have it, use
+pkg_add to add it (*really* easy if you bought the CDs).
+
+To make openbsd start Apache on boot do:
+
+	echo httpd_flags=\"\" >> /etc/rc.conf.local
+
+A sample config is at sources/conf/httpd-*.conf. You should
+(after backing up the dist. version) install the one that
+fits your situation (probably httpd-minimal.conf) at
+/var/www/conf/httpd.conf. Also check it over for site-specific corrections.
+
+You may want to start her up and look at:
+http://your.ip/ to see if it works.
+
+2) PHP 
+
+You will need to install this.
+Simply pkg_add the php-core (if you don't have the CDs,
+you have a few options, the easiest is to do pkg_add over ftp:
+
+	pkg_add -v ftp://ftp.usa.openbsd.org/pub/OpenBSD/3.7/packages/i386/php4-core-4.3.10p1.tgz
+
+You may want to:
+
+	apachectl stop
+	apachectl start
+	echo "<?php phpinfo(); ?>" > /var/www/htdocs/phpinfo.php 
+
+and look at http://your.ip/phpinfo.php to see if
+php is working.
+
+4) Install Files
+
+./install.sh should do this for you. This script
+was only tested a little bit, you may want to look
+it over before you blindly execute it. If you are
+very cautious (or cynical), you can use it is a
+road-map to do the install manually.
+
+Firstly, it will attempt to compile the daemon 'allow'.
+
+Next, it will try to install the files
+at /var/www/usr/local/wicap-php and then make a symlink
+at /usr/local/wicap-php to this location. This way,
+wicap-php is at /usr/local/wicap-php whether you are
+in a change-root jail at /var/www (like apache) or
+if you are not in a change-root jail. (This will avoid
+headaches). 
+
+this is also a good time to goto http://your.ip:8080/
+and try out the splash page.
+
+5) Setup the firewall
+
+You need to install the pf.conf at
+source/conf/pf.conf in /etc/. This is the *most* crucial
+step - it is also the most easily blundered. Make
+sure you look it over before you blindly install
+it...your settings may be different.
+
+To get openbsd to use these rules now
+
+	pfctl -e
+	sysctl net.inet.ip.forwarding=1
+
+To get openbsd to use these rules when it boots
+
+	echo pf=YES >> /etc/rc.conf.local
+
+then edit /etc/sysctl.conf and uncomment these lines
+
+	net.inet.ip.forwarding=1
+	net.inet6.ip6.forwarding=1
+
+5) The Daemon: allow
+
+To start the daemon, there is a little script "allow.rc" that
+does it correctly, try this:
+
+/usr/local/wicap-php/bin/allow.rc
+
+Also, you may want to add this to /etc/rc.local, so it will
+start on boot.
+
+6) Cron
+
+wicap-php comes with some infrastructure to rotate
+it's own logfiles. Maybe you have a way that you
+like to rotate logfiles, you are welcome to use that.
+The most crucial file is allow.log as it will
+slowly grow without bound (if debug output is enabled). 
+If you wish to do things my way, add a cron entry like:
+
+00      2       *       *       *       /usr/local/wicap-php/bin/rotate.cron
+
+By default, in OpenBSD 3.5, roots crontab will live at
+/var/cron/tabs/root
+
+7) DHCP and DNS
+
+If you want to make using your wireless network an accessible
+thing for people who can't read minds, you should have a functional
+DNS cache and DHCP, there is plenty of information around
+about how to set these things up.
+
+8) Testing and Customization
+
+There really isn't a good way to test the setup without having a wireless
+client handy, try do go through the typical functional use-case:
+
+	1. Get an ip-address using a dhcp client
+	2. Open a web-browser, no matter which page you load,
+           you should be redirected to the splash page
+	3. Click "ACCEPT", you should be redirected to a success page
+	4. Go to some other webpage
+
+If something goes awry, remember that by default PHP errors are logged
+in /var/www/logs/error_log and *are not* reported to the user. If you
+are having problems, and you think it is wicap-php's fault, contact me.
+
+You may want to customize the splash page, the files are put at:
+
+/var/www/usr/local/wicap-php/htdocs. The filenames should explain
+the purposes. At very minimum you probably should alter config.php.
+
+Good Luck!

@@ -1,0 +1,51 @@
+-= WiCap-PHP =-
+
+Copyright (c) 2005 Caleb Phillips <cphillips@smallwhitecube.com>
+Licensed under the GNU GPL. For full terms see the file COPYING.
+
+So, much like Brian Caswell - the author of wicap,
+I found myself wanting a simple captive portal
+that functioned in OpenBSD. What I found was:
+
+- NoCatAuth: OpenBSD support "sketchy at best"
+- NoCatSplash: OpenBSD support non-existant
+- WiCap: No documentation, not modularly coded,
+	written in CGI
+- Others: No OpenBSD support, cost money, or suck.
+
+In the end I wrote this simple portal in
+a way that markedly resembles the original wicap
+with a few differences:
+
+1) The web-based application is written in PHP not Perl.
+2) There is no database, the web-application communicates
+	with the daemon via a FIFO special file
+3) Written for OpenBSD 3.5 and onward rather than 3.0 and
+	3.1.
+4) Actually has some documentation.
+5) Will hopefully be maintained.
+6) Uses pf tables to update the ruleset rather than
+	mucking around with temporary files.
+7) Designed to fit agreeably within the OpenBSD default
+	chrooted httpd.
+8) Does not require dreaded the CGIExec option.
+
+--
+
+Install instructions are in INSTALL. If you have
+questions/comments/patches please contact me
+at the address in the copyleft above.
+
+--
+
+Notable Files & Locations:
+
+source/allow.pl - perl daemon apropos to NocatAuth "gateway" (obsoleted by allow.c)
+source/allow.c - the daemon, written in 'c' like any good daemon
+source/htdocs/wicap.php - php script that is the center of web app.
+source/htdocs/disclaim.php - put your disclaimer here
+source/htdocs/success.php - put your success message here
+source/htdocs/disagree.php - put your "I do not agree" message here
+source/htdocs/config.php - configuration and constants - configure me!
+source/conf/pf.conf - pf config, must be manually installed
+source/conf/httpd.conf - example httpd config, must be manually installed

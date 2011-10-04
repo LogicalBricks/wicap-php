@@ -1,0 +1,25 @@
+#!/bin/sh
+
+basedir=/usr/local/wicap-php
+bindir=$basedir/bin
+leasefile=$basedir/var/leases
+logfile=$basedir/var/allow.log.0
+rrdfile=$basedir/var/stats.rrd
+rrdtool=/usr/local/bin/rrdtool
+
+rm -f $leasefile 
+mkfifo $leasefile
+chown www $leasefile
+
+rm -f $logfile 
+touch $logfile
+
+$bindir/allow -o $logfile -l $leasefile -n
+
+# if you want rrd-logging
+# $bindir/allow -s -d $rrdfile -r $rrdtool -o $logfile -l $leasefile
+
+# if you want to run in the foreground
+# $bindir/allow -o - -f -l $leasefile
+
+# try ./allow -h for more options

@@ -313,7 +313,7 @@ void allow(){
 
 			// send the line to our child via message-queue
 			newmessage.mtype = 1;
-			strcpy(newmessage.mtext,buffer);
+			strlcpy(newmessage.mtext,buffer,sizeof(newmessage.mtext));
 			msgsnd(msqid,&newmessage,sizeof(newmessage),0);
 		}
 

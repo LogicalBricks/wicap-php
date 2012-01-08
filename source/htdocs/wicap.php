@@ -47,7 +47,7 @@
    <input type="submit" value="I DO NOT ACCEPT">
   </form>
  </div> 
-<? } ?>
+<?php } ?>
 </div>
 <?php
 	include_once('bottom.php');

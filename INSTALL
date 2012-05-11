@@ -51,7 +51,8 @@ You will need to install this.
 Simply pkg_add the php-core (if you don't have the CDs,
 you have a few options, the easiest is to do pkg_add over ftp:
 
-	pkg_add -v ftp://ftp.usa.openbsd.org/pub/OpenBSD/3.7/packages/i386/php4-core-4.3.10p1.tgz
+	export PKG_PATH=http://ftp.OpenBSD.org/pub/OpenBSD/`uname -r`/packages/`uname -m`/
+	pkg_add php-5.3.10 
 
 You may want to:
 

@@ -12,9 +12,11 @@
  *
  * author: Caleb Phillips
  * version: 2005.06.09
+ * author: Hermes Ojeda
+ * version: 2012.05.11
  */
 ?>
-	You are about to access the Internet through a wireless access node ("Node") operated on behalf Personal Telco, a provider of free public wireless internet access (the "Service").  You may use the Service only if you agree to the following terms of service ("Agreement") each time you access the Service. If you agree with and accept the Agreement, then double-click the "ACCEPT" button below.  If you do not agree with what you read below, then click the "I DO NOT ACCEPT" button and you will not be able to use the Service.  This Agreement was last revised on August 21st, 2001. 
+Welcome to the Captive Portal of LogicalBricks Solutions, this software is based on the work of Caleb Phillips.
 <br><br>
 <textarea cols=100 rows=10>
 Personal Telco Terms of Service and Acceptable Use Policy 

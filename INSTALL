@@ -97,10 +97,6 @@ To get openbsd to use these rules now
 	pfctl -e
 	sysctl net.inet.ip.forwarding=1
 
-To get openbsd to use these rules when it boots
-
-	echo pf=YES >> /etc/rc.conf.local
-
 then edit /etc/sysctl.conf and uncomment these lines
 
 	net.inet.ip.forwarding=1

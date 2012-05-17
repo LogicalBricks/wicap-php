@@ -100,7 +100,7 @@ const int log_warn = 2;
 const int log_info = 3;
 const int log_debug = 4;
 const unsigned int buffersize = 80;
-const char *version = "Wicap-PHP [version: delta] Copyright (c) 2005 Caleb Phillips <cphillips@smallwhitecube.com>";
+const char *version = "Wicap-PHP [version: epsilon] Copyright (c) 2005 Caleb Phillips <cphillips@smallwhitecube.com>";
 const char *license = "This is free software: GNU GPL (http://www.gnu.org/licenses/gpl.txt)";
 
 // ---- GLOBALS (yuck) ----

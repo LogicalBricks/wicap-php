@@ -18,7 +18,7 @@
 ?>
 <div id="content"> 
 <?php	
-	if(isset($HTTP_POST_VARS['agree'])){
+	if(isset($_POST['agree'])){
 		// write to the leasefile (a named pipe)
 		$fh = fopen(LEASEFILE,"w");
 		$ip = $_SERVER['REMOTE_ADDR'];
@@ -30,7 +30,7 @@
  <hr>
 <?php
 		include_once('success.php');
-	}else if(isset($HTTP_POST_VARS['disagree'])){
+	}else if(isset($_POST['disagree'])){
         	include_once('disagree.php');
 	}else{
 ?>

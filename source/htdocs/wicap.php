@@ -21,7 +21,7 @@
 	if(isset($HTTP_POST_VARS['agree'])){
 		// write to the leasefile (a named pipe)
 		$fh = fopen(LEASEFILE,"w");
-		$ip = $HTTP_SERVER_VARS['REMOTE_ADDR'];
+		$ip = $_SERVER['REMOTE_ADDR'];
 	        fwrite($fh,"$ip\n");
 		fclose($fh);	
 		// success - this should be customized
@@ -36,6 +36,10 @@
 ?>
  <div id="title"><?php echo TITLE; ?></div>
  <hr>
+<p><?php 
+$ipaddr = $_SERVER['REMOTE_ADDR']; 
+echo $ipaddr;
+ ?></p>
  <div id="disclaim">
   <?php include_once('disclaim.php'); ?>
   <form METHOD="POST" action="wicap.php">

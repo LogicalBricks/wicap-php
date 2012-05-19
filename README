@@ -2,6 +2,7 @@
 
 Copyright (c) 2005 Caleb Phillips <cphillips@smallwhitecube.com>
 Licensed under the GNU GPL. For full terms see the file COPYING.
+Updated by: Hermes Ojeda Ruiz <hermes.ojeda@logicalbricks.com>
 
 So, much like Brian Caswell - the author of wicap,
 I found myself wanting a simple captive portal
@@ -29,6 +30,7 @@ with a few differences:
 7) Designed to fit agreeably within the OpenBSD default
 	chrooted httpd.
 8) Does not require dreaded the CGIExec option.
+9) Now works on OpenBSD 5.1 
 
 --
 

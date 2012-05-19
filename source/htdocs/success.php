@@ -13,15 +13,17 @@
  */
 ?>
    Well, that was fairly painless. 
-   <br><br>
-   The InTARWeb (tm) is a big place, maybe you should start at one of these:<br>
-   <a href="http://<?php echo $HTTP_SERVER_VARS['HTTP_HOST'].$HTTP_SERVER_VARS['REQUEST_URI']; ?>">Your Start Page</a> - Or Whereever you Intended to go...<br>
-   <a href="http://www.personaltelco.net">Personal Telco</a> - This node is part of *them*<br>
-   <a href="http://www.google.com">Google</a> - A Search Engine<br>
-   <a href="http://smallwhitecube.com">Small White Cube</a> - My Website<br>
-   <a href="http://www.slashdot.com">Slashdot</a> - News for Nerds<br>
-   <a href="http://www.openbsd.org">OpenBSD</a> - The Proactively Secure Unix-Like OS<br>
-   <a href="http://www.php.net">PHP</a> - The Hypertext Preprocessor<br>
-   <a href="http://www.perl.com">Perl</a> - The most wonderfullest scripting language<br>
-   <br>
+   <br /><br />
+   The InTARWeb (tm) is a big place, maybe you should start at one of these:<br />
+   <a href="http://<?php echo $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>">Your Start Page</a> - Or Whereever you Intended to go...<br />
+   <a href="http://www.personaltelco.net">Personal Telco</a> - This node is part of *them*<br />
+   <a href="http://www.google.com">Google</a> - A Search Engine<br />
+   <a href="http://smallwhitecube.com">Small White Cube</a> - My Website<br />
+   <a href="http://www.slashdot.com">Slashdot</a> - News for Nerds<br />
+   <a href="http://www.openbsd.org">OpenBSD</a> - The Proactively Secure Unix-Like OS<br />
+   <a href="http://www.php.net">PHP</a> - The Hypertext Preprocessor<br />
+   <a href="http://www.perl.com">Perl</a> - The most wonderfullest scripting language<br />
+   <a href="http://logicalbricks.com">LogicalBricks</a> - A company based in Open Source software.<br />
+   <a href="http://community.logicalbricks.com">LogicalBricks Community</a> - A nice blog to learn something, based on the experience of LogicalBricks.<br />
+   <br />
    If this node is acting funny please <a href="http://www.smallwhitecube.com/reliam.php">let me know</a>.  

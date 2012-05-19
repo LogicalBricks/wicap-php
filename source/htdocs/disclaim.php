@@ -17,7 +17,9 @@
  */
 ?>
 Welcome to the Captive Portal of LogicalBricks Solutions, this software is based on the work of Caleb Phillips.
-<br><br>
+<br />
+Based on the Terms of Service of Personal Telco
+<br />
 <textarea cols=100 rows=10>
 Personal Telco Terms of Service and Acceptable Use Policy 
 

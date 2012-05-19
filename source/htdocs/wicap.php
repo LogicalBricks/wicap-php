@@ -11,6 +11,9 @@
  * 
  * author: Caleb Phillips
  * version: 2005.06.09
+ * 
+ * another author: Hermes Ojeda Ruiz
+ * version: 2012.05.18 
  */
 	include_once('config.php');
 	include_once('top.php');
@@ -35,7 +38,7 @@
 	}else{
 ?>
  <div id="title"><?php echo TITLE; ?></div>
- <hr>
+ <hr />
 <p><?php 
 $ipaddr = $_SERVER['REMOTE_ADDR']; 
 echo $ipaddr;
